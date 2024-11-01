@@ -1,4 +1,3 @@
-/* eslint-disable */
 import apiWala, { wallpaperflareHeaders } from '@modules/api/axios';
 import { euric, getLoopEnd } from '@modules/api/utils';
 import { KatputliFn } from '@project-types';

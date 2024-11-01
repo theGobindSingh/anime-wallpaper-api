@@ -1,4 +1,3 @@
-/* eslint-disable */
 import apiWala, { wallhavenHeaders } from '@modules/api/axios';
 import { euric, getLoopEnd } from '@modules/api/utils';
 import { KatputliFn, QueryWithoutSource } from '@project-types';
