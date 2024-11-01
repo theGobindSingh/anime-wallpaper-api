@@ -33,16 +33,22 @@ apiWala.interceptors.request.use(
 
 export default apiWala;
 
-export const wallhavenHeaders = {
-  accept: 'text/html, */*; q=0.01',
+const commonHeaders = {
   'accept-language': 'en-US,en;q=0.9,en-IN;q=0.8',
   'cache-control': 'no-cache',
   dnt: '1',
   pragma: 'no-cache',
-  priority: 'u=1, i',
-  referer: 'https://wallhaven.cc/search',
   'sec-ch-ua':
     '"Chromium";v="130", "Microsoft Edge";v="130", "Not?A_Brand";v="99"',
+  'sec-ch-ua-platform': '"Linux"',
+  'sec-fetch-site': 'same-origin',
+};
+
+export const wallhavenHeaders = {
+  ...commonHeaders,
+  accept: 'text/html, */*; q=0.01',
+  priority: 'u=1, i',
+  referer: 'https://wallhaven.cc/search',
   'sec-ch-ua-arch': '"x86"',
   'sec-ch-ua-bitness': '"64"',
   'sec-ch-ua-full-version': '"130.0.2849.46"',
@@ -50,10 +56,23 @@ export const wallhavenHeaders = {
     '"Chromium";v="130.0.6723.59", "Microsoft Edge";v="130.0.2849.46", "Not?A_Brand";v="99.0.0.0"',
   'sec-ch-ua-mobile': '?0',
   'sec-ch-ua-model': '""',
-  'sec-ch-ua-platform': '"Linux"',
   'sec-ch-ua-platform-version': '"6.8.0"',
   'sec-fetch-dest': 'empty',
   'sec-fetch-mode': 'cors',
-  'sec-fetch-site': 'same-origin',
   'x-requested-with': 'XMLHttpRequest',
+};
+
+export const wallpaperflareHeaders = {
+  ...commonHeaders,
+  accept:
+    'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+  cookie: 'cookieconsent_status=dismiss',
+  priority: 'u=0, i',
+  referer: 'https://www.wallpaperflare.com/',
+  'sec-ch-ua-mobile': '?0',
+  'sec-fetch-dest': 'document',
+  'sec-fetch-mode': 'navigate',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-user': '?1',
+  'upgrade-insecure-requests': '1',
 };

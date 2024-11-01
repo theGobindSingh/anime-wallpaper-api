@@ -1,5 +1,5 @@
 /* eslint-disable */
-import apiWala from '@modules/api/axios';
+import apiWala, { wallpaperflareHeaders } from '@modules/api/axios';
 import { euric, getLoopEnd } from '@modules/api/utils';
 import { KatputliFn } from '@project-types';
 import { JSDOM } from 'jsdom';
@@ -22,7 +22,9 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
   if (minWidth) {
     url.searchParams.append('width', minWidth);
   }
-  const { data } = await apiWala.get(url.toString());
+  const { data } = await apiWala.get(url.toString(), {
+    headers: wallpaperflareHeaders,
+  });
   const dom = new JSDOM(data);
   const anchors = dom.window.document.querySelectorAll('ul#gallery li a');
   const downloadUrls = Array.from(anchors).map(
@@ -31,7 +33,9 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
   const urls: string[] = [];
   for (let i = 0; i < getLoopEnd(numOfImages, downloadUrls.length); i += 1) {
     if (!downloadUrls[i]) continue;
-    const { data } = await apiWala.get(downloadUrls[i]!);
+    const { data } = await apiWala.get(downloadUrls[i]!, {
+      headers: wallpaperflareHeaders,
+    });
     const downloadDom = new JSDOM(data);
     const imgUrl = downloadDom.window.document
       .querySelector('img#show_img')
