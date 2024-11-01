@@ -9,6 +9,8 @@ import pluginReact from 'eslint-plugin-react';
 // @ts-ignore
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 // @ts-ignore
+// import nextConfig from 'eslint-config-next';
+// @ts-ignore
 import pluginReactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
