@@ -4,16 +4,13 @@
   "env": { "browser": true, "es2020": true },
   "extends": [
     "eslint:recommended",
-    "next",
-    "next/core-web-vitals",
-    "plugin:react-hooks/recommended",
-    "plugin:node/recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:node/recommended",
+    "next/core-web-vitals",
     "prettier"
   ],
   "ignorePatterns": ["dist", "node_modules", "**/*.js"],
@@ -65,9 +62,14 @@
     "node/no-unsupported-features/es-syntax": [
       "error",
       {
-        "version": ">=13.0.0",
+        "version": ">=16.0.0",
         "ignores": ["modules", "dynamicImport"]
       }
     ]
+  },
+  "settings": {
+    "next": {
+      "rootDir": "."
+    }
   }
 }

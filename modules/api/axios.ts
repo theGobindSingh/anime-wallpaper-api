@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import UserAgent from 'user-agents';
 
@@ -23,13 +24,11 @@ apiWala.interceptors.request.use(
   (config) => {
     const userAgent = new UserAgent({ deviceCategory: 'desktop' }); // Generate a new User-Agent
     config.headers['User-Agent'] = userAgent.toString(); // Set the User-Agent header
-    let randomProxyIndex = Math.floor(Math.random() * proxies.length);
+    const randomProxyIndex = Math.floor(Math.random() * proxies.length);
     config.proxy = proxies[randomProxyIndex]!; // Set the proxy
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
 export default apiWala;
@@ -56,7 +55,5 @@ export const wallhavenHeaders = {
   'sec-fetch-dest': 'empty',
   'sec-fetch-mode': 'cors',
   'sec-fetch-site': 'same-origin',
-  // 'user-agent':
-  //   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
   'x-requested-with': 'XMLHttpRequest',
 };

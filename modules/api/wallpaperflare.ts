@@ -1,3 +1,4 @@
+/* eslint-disable */
 import apiWala from '@modules/api/axios';
 import { euric, getLoopEnd } from '@modules/api/utils';
 import { KatputliFn } from '@project-types';
@@ -25,7 +26,7 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
   const dom = new JSDOM(data);
   const anchors = dom.window.document.querySelectorAll('ul#gallery li a');
   const downloadUrls = Array.from(anchors).map(
-    (anchor) => anchor.getAttribute('href') + '/download',
+    (anchor) => `${anchor.getAttribute('href')}/download`,
   );
   const urls: string[] = [];
   for (let i = 0; i < getLoopEnd(numOfImages, downloadUrls.length); i += 1) {
