@@ -86,7 +86,7 @@ export const katputliForWallhaven: KatputliFn<'wallhaven'> = async ({
 }) => {
   const url = getUrl(props);
   const { data } = await apiWala.get(url, { headers: wallhavenHeaders });
-  const dom = new JSDOM(data);
+  const dom = new JSDOM(data as string);
   const rawImgs = Array.from(dom.window.document.querySelectorAll('img') ?? []);
   const urls: string[] = [];
   const loopEnd = getLoopEnd({ numOfImages, length: rawImgs.length });
@@ -100,7 +100,7 @@ export const katputliForWallhaven: KatputliFn<'wallhaven'> = async ({
     const { data: downloadData } = await apiWala.get(downloadUrl, {
       headers: wallhavenHeaders,
     });
-    const downloadDom = new JSDOM(downloadData);
+    const downloadDom = new JSDOM(downloadData as string);
     const downloadImgUrl = downloadDom.window.document
       .querySelector('img#wallpaper')
       ?.getAttribute('src');

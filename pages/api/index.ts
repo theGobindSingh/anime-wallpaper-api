@@ -5,7 +5,7 @@ import { NextApiHandler } from 'next';
 const handler: NextApiHandler<ApiResponse> = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      const katputliRes = await katputli(req.query as Query<any>);
+      const katputliRes = await katputli(req.query as Query);
       return res.status(200).json({ isSuccessful: true, data: katputliRes });
     } catch (err) {
       return res.status(500).json({

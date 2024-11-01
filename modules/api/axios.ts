@@ -27,7 +27,7 @@ apiWala.interceptors.request.use(
     config.proxy = proxies[randomProxyIndex]!; // Set the proxy
     return config;
   },
-  (error) => Promise.reject(error),
+  (error: Error) => Promise.reject(error),
 );
 
 export default apiWala;
@@ -64,6 +64,7 @@ export const wallhavenHeaders = {
 export const wallpaperflareHeaders = {
   ...commonHeaders,
   accept:
+    // eslint-disable-next-line max-len
     'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
   cookie: 'cookieconsent_status=dismiss',
   priority: 'u=0, i',

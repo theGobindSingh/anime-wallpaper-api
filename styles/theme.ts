@@ -2,9 +2,9 @@ import { defaultLightTheme } from '@kami-ui/theme-shop';
 import { ThemeObject } from '@kami-ui/types';
 import { breakpoints } from '@styles/global';
 import {
-  DM_Mono,
+  DM_Mono as DmMono,
   Inter,
-  Nothing_You_Could_Do,
+  Nothing_You_Could_Do as NothingYouCouldDo,
   Poppins,
 } from 'next/font/google';
 
@@ -13,7 +13,7 @@ const fontSansSerif = Inter({
   subsets: ['latin', 'latin-ext'],
 });
 
-const fontMono = DM_Mono({
+const fontMono = DmMono({
   weight: ['400', '500'],
   subsets: ['latin', 'latin-ext'],
 });
@@ -23,7 +23,7 @@ const fontSans = Poppins({
   subsets: ['latin', 'latin-ext'],
 });
 
-const fontCursive = Nothing_You_Could_Do({
+const fontCursive = NothingYouCouldDo({
   weight: ['400'],
   subsets: ['latin'],
 });

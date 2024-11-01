@@ -24,7 +24,7 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
   const { data } = await apiWala.get(url.toString(), {
     headers: wallpaperflareHeaders,
   });
-  const dom = new JSDOM(data);
+  const dom = new JSDOM(data as string);
   const anchors = dom.window.document.querySelectorAll('ul#gallery li a');
   const downloadUrls = Array.from(anchors).map(
     (anchor) => `${anchor.getAttribute('href')}/download`,
@@ -39,7 +39,7 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
     const { data } = await apiWala.get(downloadUrls[i]!, {
       headers: wallpaperflareHeaders,
     });
-    const downloadDom = new JSDOM(data);
+    const downloadDom = new JSDOM(data as string);
     const imgUrl = downloadDom.window.document
       .querySelector('img#show_img')
       ?.getAttribute('src');
