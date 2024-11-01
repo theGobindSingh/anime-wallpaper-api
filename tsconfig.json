@@ -25,6 +25,12 @@
     "ignoreDeprecations": "5.0",
     "verbatimModuleSyntax": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "eslint.config.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "eslint.config.mjs",
+    "next.config.js"
+  ],
   "exclude": ["node_modules"]
 }
