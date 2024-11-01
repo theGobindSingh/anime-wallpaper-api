@@ -1,17 +1,14 @@
-// @ts-expect-error -- idk
 import pluginJs from '@eslint/js';
-// @ts-expect-error -- idk
-import next from '@next/eslint-plugin-next';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-// @ts-expect-error -- idk
-import prettierConfig from 'eslint-config-prettier';
+// @ts-ignore
+import next from '@next/eslint-plugin-next';
 import prettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
-// @ts-expect-error -- idk
+// @ts-ignore
 export default [
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -21,18 +18,16 @@ export default [
       parserOptions: { project: './tsconfig.json' },
     },
     plugins: {
-      next,
-      react: pluginReact,
-      '@typescript-eslint': tsPlugin,
       prettier,
+      react: pluginReact,
+      '@next/next': next,
+      '@typescript-eslint': tsPlugin,
     },
     rules: {
       ...pluginJs.configs.recommended.rules,
-      // @ts-expect-error -- idk
-      ...tsPlugin.configs.recommended.rules,
-      // @ts-expect-error -- idk
-      ...pluginReact.configs.flat.recommended.rules,
-      ...prettierConfig.rules, // Ensures Prettier conflicts are resolved
+      ...tsPlugin.configs.recommended?.rules,
+      ...pluginReact.configs.flat?.recommended?.rules,
+      ...next.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': 'warn',
