@@ -11,13 +11,20 @@ const getUrl = ({
   atLeastResolution,
   exactResolution,
   ratios,
+  order,
+  sort,
   page = '1',
   q = 'anime',
 }: QueryWithoutSource<'wallhaven'>) => {
   const url = new URL('https://wallhaven.cc/search');
   url.searchParams.append('page', page);
   url.searchParams.append('q', euric(q));
-  const { possibleRatios, validResolutionRegex } = wallhavenConstants;
+  const {
+    possibleRatios,
+    validResolutionRegex,
+    orderingOptions,
+    sortingOptions,
+  } = wallhavenConstants;
   if (categories) {
     let general = 0;
     let anime = 0;
@@ -63,6 +70,12 @@ const getUrl = ({
     }
     const queryValueStr = validRatioValArr.join('%2C');
     url.searchParams.append('resolutions', queryValueStr);
+  }
+  if (order && orderingOptions[order]) {
+    url.searchParams.append('order', order);
+  }
+  if (sort && sortingOptions[sort]) {
+    url.searchParams.append('sorting', sort);
   }
   return url.toString();
 };

@@ -1,3 +1,8 @@
+import {
+  wallhavenOrderOptions,
+  wallhavenSortingOptions,
+} from '@modules/api/constants';
+
 export interface ApiResponse {
   isSuccessful: boolean;
   data?: {
@@ -22,15 +27,8 @@ export interface WallhavenQuery {
   exactResolution?: string;
   atLeastResolution?: string;
   ratios?: string;
-  sort?:
-    | 'relevance'
-    | 'random'
-    | 'date_added'
-    | 'views'
-    | 'favorites'
-    | 'toplist'
-    | 'hot';
-  order?: 'desc' | 'asc';
+  sort?: keyof typeof wallhavenSortingOptions;
+  order?: keyof typeof wallhavenOrderOptions;
 }
 
 interface QueryMap {
