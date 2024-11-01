@@ -30,7 +30,11 @@ export const katputliForWallpaperflare: KatputliFn<'wallpaperflare'> = async ({
     (anchor) => `${anchor.getAttribute('href')}/download`,
   );
   const urls: string[] = [];
-  for (let i = 0; i < getLoopEnd(numOfImages, downloadUrls.length); i += 1) {
+  for (
+    let i = 0;
+    i < getLoopEnd({ numOfImages, length: downloadUrls.length });
+    i += 1
+  ) {
     if (!downloadUrls[i]) continue;
     const { data } = await apiWala.get(downloadUrls[i]!, {
       headers: wallpaperflareHeaders,

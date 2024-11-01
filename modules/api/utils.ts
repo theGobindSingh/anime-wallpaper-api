@@ -17,8 +17,14 @@ export const euric = (str: string, usePlus = true) => {
   return usePlus ? uriComponent.replace(/%20/gm, '+') : uriComponent;
 };
 
-export const getLoopEnd = (numOfImages: string | undefined, length: number) => {
+export const getLoopEnd = ({
+  numOfImages = '10',
+  length,
+}: {
+  numOfImages: string | undefined;
+  length: number;
+}) => {
   if (!numOfImages) return length;
   const num = +numOfImages;
-  return Number.isNaN(num) ? length : num;
+  return Number.isNaN(num) ? length : Math.min(num, length);
 };

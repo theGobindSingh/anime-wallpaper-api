@@ -19,8 +19,9 @@ export interface WallhavenQuery {
   categories?: ('general' | 'anime' | 'people')[];
   isAi?: string;
   nsfw?: string;
-  exactResolution?: string | string[];
+  exactResolution?: string;
   atLeastResolution?: string;
+  ratios?: string;
   sort?:
     | 'relevance'
     | 'random'
