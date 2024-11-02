@@ -1,6 +1,7 @@
 export const wallhavenSortingOptions = {
   relevance: 'relevance',
   random: 'random',
+  // eslint-disable-next-line camelcase
   date_added: 'date_added',
   views: 'views',
   favorites: 'favorites',
